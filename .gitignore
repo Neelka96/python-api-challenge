@@ -1,3 +1,9 @@
+# Adding config.py file
+api_keys.py
+
+# Adding MacOS directory files
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
