@@ -1,5 +1,6 @@
 # Adding config.py file
 api_keys.py
+api_calls.py
 
 # Adding MacOS directory files
 .DS_Store
