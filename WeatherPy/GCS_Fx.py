@@ -2,9 +2,12 @@
 ### User Defined Functions
 ### Written by Neel K Agarwal
 
+import matplotlib.pyplot as plt
+from time import asctime
+from scipy.stats import linregress
+
 def date_str(Numerical_Month = True):
     '''Method uses system's Unix Timestamp and returns str date in form: `YYYY-MM-DD`'''
-    from time import asctime
     time_curr = asctime()
     time_year = time_curr[-4:]
     time_month = time_curr[4:7]
@@ -22,13 +25,10 @@ def date_str(Numerical_Month = True):
     new_str = f'{time_year}-{time_month}-{time_day}'
     return f'{new_str}'
 
-def s_Plot():
-    
+# def s_Plot():
 
 def r_plot(x_vals, y_vals, rounding = 2):
     '''Takes in iter. sequences for x axis & y axis and returns linear regression plots with seperate data'''
-    import matplotlib.pyplot as plt
-    from scipy.stats import linregress
     (x_slope, y_intercept, r_value, p_value, std_Err) = linregress(x_vals, y_vals)
     exp_vals = x_slope * x_vals + y_intercept
     str_eq = f'y = {round(x_slope, rounding)}x + {round(y_intercept, rounding)}'
@@ -41,7 +41,7 @@ def r_plot(x_vals, y_vals, rounding = 2):
     print(f'The r^2-value is: {r_value}')
     return str_eq, exp_vals
 
-def axis_titles(title_x, title_y):
+def plot_title(title_x, title_y):
     title_dict = {
         'Lat': 'Latitude',
         'Lng': 'Longitude',
@@ -53,8 +53,13 @@ def axis_titles(title_x, title_y):
             title_y = title_dict[title_y]
         except:
             pass
-    return title_x, title_y
+    return f'City {title_x} vs. {title_y} ({date_str()})'
         # try:
         #     title_y = title_dict[title_y]
         # except:
         #     pass
+
+# def axis_labels(label_x, label_y):
+
+# if __name__ == '__main__':
+#     pass
