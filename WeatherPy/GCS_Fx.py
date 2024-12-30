@@ -1,12 +1,10 @@
-from time import asctime
-import matplotlib.pyplot as plt
-from scipy.stats import linregress
+### GCS_Fx (Geographic Coordinate System Functions)
+### User Defined Functions
+### Written by Neel K Agarwal
 
-# Doesn't require an argument
-# Returns the current day as a string:
-# Ex. 2024-04-01
 def date_str(Numerical_Month = True):
     '''Method uses system's Unix Timestamp and returns str date in form: `YYYY-MM-DD`'''
+    from time import asctime
     time_curr = asctime()
     time_year = time_curr[-4:]
     time_month = time_curr[4:7]
@@ -24,8 +22,13 @@ def date_str(Numerical_Month = True):
     new_str = f'{time_year}-{time_month}-{time_day}'
     return f'{new_str}'
 
+def s_Plot():
+    
+
 def r_plot(x_vals, y_vals, rounding = 2):
     '''Takes in iter. sequences for x axis & y axis and returns linear regression plots with seperate data'''
+    import matplotlib.pyplot as plt
+    from scipy.stats import linregress
     (x_slope, y_intercept, r_value, p_value, std_Err) = linregress(x_vals, y_vals)
     exp_vals = x_slope * x_vals + y_intercept
     str_eq = f'y = {round(x_slope, rounding)}x + {round(y_intercept, rounding)}'
@@ -35,12 +38,23 @@ def r_plot(x_vals, y_vals, rounding = 2):
     except Exception as e:
         print(f'Could not annotate.\Cause: {e.__cause__}\nClass: {e.__class__}')
     plt.show()
+    print(f'The r^2-value is: {r_value}')
     return str_eq, exp_vals
 
-def axis_titles():
+def axis_titles(title_x, title_y):
     title_dict = {
         'Lat': 'Latitude',
         'Lng': 'Longitude',
-        'Max Temp': 'Max Temperature',
-        ''
+        'Max Temp': 'Max Temperature'
     }
+    if (title_x or title_y) in title_dict:
+        try:
+            title_x = title_dict[title_x]
+            title_y = title_dict[title_y]
+        except:
+            pass
+    return title_x, title_y
+        # try:
+        #     title_y = title_dict[title_y]
+        # except:
+        #     pass
