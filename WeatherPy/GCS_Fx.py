@@ -6,13 +6,12 @@ import matplotlib.pyplot as plt
 from time import asctime
 from scipy.stats import linregress
 
-def date_str(Numerical_Month = True):
+def __date__(Numerical_Month = True):
     '''Method uses system's Unix Timestamp and returns str date in form: `YYYY-MM-DD`'''
     time_curr = asctime()
     time_year = time_curr[-4:]
     time_month = time_curr[4:7]
     time_day = time_curr[8:10]
-
     if Numerical_Month == True:
         month_dict = {
             'Jan': '01', 'Feb': '02', 'Mar': '03',
@@ -21,45 +20,78 @@ def date_str(Numerical_Month = True):
             'Oct': '10', 'Nov': '11', 'Dec': '12'
         }
         time_month = month_dict[time_month]
-        
-    new_str = f'{time_year}-{time_month}-{time_day}'
-    return f'{new_str}'
+    return f'{time_year}-{time_month}-{time_day}'
 
-# def s_Plot():
-
-def r_plot(x_vals, y_vals, rounding = 2):
-    '''Takes in iter. sequences for x axis & y axis and returns linear regression plots with seperate data'''
-    (x_slope, y_intercept, r_value, p_value, std_Err) = linregress(x_vals, y_vals)
-    exp_vals = x_slope * x_vals + y_intercept
-    str_eq = f'y = {round(x_slope, rounding)}x + {round(y_intercept, rounding)}'
-    plt.plot(x_vals, exp_vals, color = 'red')
-    try:
-        plt.annotate(str_eq, color = 'red', loc = 'best', fontsize = 12, alpha = 0.9)
-    except Exception as e:
-        print(f'Could not annotate.\Cause: {e.__cause__}\nClass: {e.__class__}')
-    plt.show()
-    print(f'The r^2-value is: {r_value}')
-    return str_eq, exp_vals
-
-def plot_title(title_x, title_y):
-    title_dict = {
+def __label__(xLabel, yLabel, form_switch = False):
+    label_dict = {      # For Axis Label Corrections
         'Lat': 'Latitude',
         'Lng': 'Longitude',
-        'Max Temp': 'Max Temperature'
-    }
-    if (title_x or title_y) in title_dict:
-        try:
-            title_x = title_dict[title_x]
-            title_y = title_dict[title_y]
-        except:
-            pass
-    return f'City {title_x} vs. {title_y} ({date_str()})'
-        # try:
-        #     title_y = title_dict[title_y]
-        # except:
-        #     pass
+        'Max Temp': 'Max Temperature (C)',
+        'Humidity': 'Humidity (%)',
+        'Cloudiness': 'Cloudiness (%)',
+        'Wind Speed': 'Wind Speed (m/s)'
+        }
+    if form_switch:
+        label_dict = {      # For Title corrections and creation
+            'Lat': 'Latitude',
+            'Lng': 'Longitude',
+            'Max Temp': 'Max Temperature',
+            'Humidity': 'Humidity',
+            'Cloudiness': 'Cloudiness',
+            'Wind Speed': 'Wind Speed'
+            }
+    xLabel = label_dict[xLabel]
+    yLabel = label_dict[yLabel]
+    return xLabel, yLabel
 
-# def axis_labels(label_x, label_y):
+def __title__(xTitle, yTitle):
+    ''''Self-contained function needed for plotting methods'''
+    title = f'City {xTitle} vs. {yTitle} ({__date__()})'
+    return title
 
-# if __name__ == '__main__':
-#     pass
+def save_as(fileName, parent_dir = 'output_data'):
+    '''Saves current pyplot object and displays it (flushing)'''
+    '''Required arg `fileName` to name new .png figure'''
+    '''Default parent directory of `output_data`'''
+    outPath = f'{parent_dir}/{fileName}'
+    plt.savefig(outPath)
+    plt.show()
+
+def __regress__(xSeries, ySeries, rounding = 2):
+    '''Takes in iter. sequences for x axis & y axis and returns linear regression plots with seperate data'''
+    (x_slope, y_intercept, r_value, _, _) = linregress(xSeries, ySeries)
+    exp_vals = x_slope * xSeries + y_intercept
+    eq_str = f'y = {round(x_slope, rounding)}x + {round(y_intercept, rounding)}'
+    r_str = f'The r^2-value is: {r_value}'
+    return exp_vals, eq_str, r_str
+
+# PLOTTERS:
+def s_plot(df, xColumn, yColumn):
+    '''Creates a scatter plot with a DataFrame and two column labels.'''
+    '''Function does not perform `plt.show()` in case of multiple plots.'''
+    _, axis = plt.subplots()
+    handle = axis.scatter(x = df[xColumn], y = df[yColumn])
+    plt.grid(True)
+    title = __title__(__label__(xColumn, yColumn, True))
+    xLabel, yLabel = __label__(xColumn, yColumn)
+    plt.title(title)
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    return axis, handle
+
+def r_plot(df, xColumn, yColumn):
+    axis, s_handle = s_plot(df, xColumn, yColumn)
+    ySeries, rEquation, r_printout = __regress__(df[xColumn], df[yColumn])
+    print(r_printout)
+    l_handle, = axis.plot(ySeries, color = 'red', alpha = 0.9)
+    plt.annotate(rEquation, xy = (0, 0), color = 'red', fontsize = 12, alpha = 0.9)
+    plt.legend(loc = 'best')
+    plt.show()
+
+if __name__ == '__main__':
+    delim_index = __file__.rfind('/')
+    fileName = __file__[(delim_index + 1):]
+    print(f'| Executing {fileName}...\n' +
+        '| File not intended as independent script.\n' +
+        f'| {fileName} is library of user defined functions.\n' +
+        '| Please see: https://github.com/Neelka96/python-api-challenge')
