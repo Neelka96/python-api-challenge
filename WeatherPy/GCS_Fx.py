@@ -26,7 +26,7 @@ def s_plot(dict, x_key, y_key):
     plt.ylabel(yLabel)
     return axis, handle
 
-def r_plot(dict, x, y, decimal = 2):
+def r_plot(dict, x, y, text_pos = (0, 0), coord_sys = 'data',  decimal = 2):
     '''Linear Regression Plotter: Uses scipy.stats.linregress()'''
     '''Automatically handles multiplotting, legends, annotating, and printouts.'''
     '''Takes in a DataFrame object and desired columns to use as axes'''
@@ -39,11 +39,8 @@ def r_plot(dict, x, y, decimal = 2):
     axis.plot(dict[x], regress_vals, color = 'r', alpha = 0.9, label = f'{y} Linear Regression')
     equation = f'y = {round(slope, decimal)}x + {round(intercept, decimal)}'
     plt.legend(loc = 'best')
-    # TODO:
-    # xCord = 
-    # yCord =
-    # plt.annotate(text = equation, xycoords = 'axes points', xy = (),
-    #             color = 'r', fontsize = 12, alpha = 1)
+    plt.annotate(text = equation, xy = text_pos, xycoords = coord_sys,
+                color = 'r', fontsize = 14, alpha = 1)
     return axis
 
 #----------------------------------------------------
