@@ -8,7 +8,7 @@
 # Function Dependencies --> Imported to Jupyter Notebook (WeatherPy.ipynb) through gcs_fx.py
 from time import asctime
 import matplotlib.pyplot as plt
-from scipy.stats import linregress
+from scipy.stats import linregress, pearsonr
 
 #----------------------------------------------------
 # Plotters --> Call upon constructor functions
@@ -16,7 +16,7 @@ def s_plot(dict, x_key, y_key):
     '''Creates a scatter plot with a DataFrame and two column labels.'''
     '''Function does not perform `plt.show()` in case of multiple plots.'''
     _, axis = plt.subplots()
-    handle = axis.scatter(x = dict[x_key], y = dict[y_key], label = f'{y_key} Scatter Plot')
+    handle = axis.scatter(dict[x_key], dict[y_key], label = f'{y_key} Scatter Plot')
     plt.grid(True)
     xTitle, yTitle = __label__(x_key, y_key, True)
     title = __title__(xTitle, yTitle)
@@ -26,28 +26,31 @@ def s_plot(dict, x_key, y_key):
     plt.ylabel(yLabel)
     return axis, handle
 
-def r_plot(dict, x, y, text_pos = (0, 0), coord_sys = 'data',  decimal = 2):
+def r_plot(dict, x, y, text_pos = (0, 0), coord_sys = 'data',
+            decimal = 2, line_color = 'red', line_alpha = 1,
+            text_color = 'red', text_size = 14, text_alpha = 1):
     '''Linear Regression Plotter: Uses scipy.stats.linregress()'''
     '''Automatically handles multiplotting, legends, annotating, and printouts.'''
     '''Takes in a DataFrame object and desired columns to use as axes'''
     (axis, _) = s_plot(dict, x, y)
     (slope, intercept, r_value, _, _) = linregress(dict[x], dict[y])
     print(f'The r^2-value is: {r_value**2}')
-    regress_vals = []
-    for val in dict[x]:
-        regress_vals.append(val * slope + intercept)
-    axis.plot(dict[x], regress_vals, color = 'r', alpha = 0.9, label = f'{y} Linear Regression')
+    regress_vals = [val * slope + intercept for val in dict[x]]
+    (correlation, _) = pearsonr(dict[x], dict[y])
+    print(f'Correlation Coefficient: {correlation}')
+    axis.plot(dict[x], regress_vals, color = line_color, 
+            alpha = line_alpha, label = f'{y} Linear Regression')
     equation = f'y = {round(slope, decimal)}x + {round(intercept, decimal)}'
     plt.legend(loc = 'best')
     plt.annotate(text = equation, xy = text_pos, xycoords = coord_sys,
-                color = 'r', fontsize = 14, alpha = 1)
+                color = text_color, fontsize = text_size, alpha = text_alpha)
     return axis
 
 #----------------------------------------------------
 # Utilities
 def flush(fileName = None, save = False, parent_dir = 'output_data'):
-    '''Saves current pyplot object and displays it (and flushing pyplot)'''
-    '''Required arg `fileName` to name new .png figure'''
+    '''Flushes PyPlot and saves figure if given a string for arg `fileName`'''
+    '''Can save with bool `save` variable with automatic naming'''
     '''Default parent directory of `output_data`'''
     if fileName:
         outPath = f'{parent_dir}/{fileName}'
@@ -118,6 +121,10 @@ def __title__(xTitle, yTitle):
     ''''Returns the complete title of a graph'''
     title = f'City {xTitle} vs. {yTitle} ({__date__()})'
     return title
+
+# TODO:
+# def __correlation__(coefficient):
+
 
 ### IMPORTED FUNCTIONS /-->
 
