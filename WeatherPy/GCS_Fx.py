@@ -45,9 +45,6 @@ def r_plot(dict, x, y, text_pos = (0, 0), coord_sys = 'data',
     (slope, intercept, r_value, _, _) = linregress(dict[x], dict[y])
     print(f'The r^2-value is: {r_value**2}')
     regress_vals = [val * slope + intercept for val in dict[x]]
-    # TODO:
-    (correlation, _) = pearsonr(dict[x], dict[y])
-    print(f'Correlation Coefficient: {correlation}') # TODO /->
     axis.plot(dict[x], regress_vals, color = line_color, 
             alpha = line_alpha, label = f'{y} Linear Regression')
     equation = f'y = {round(slope, decimal)}x + {round(intercept, decimal)}'
@@ -94,7 +91,7 @@ def city_generator(curve_size = 1500, lat_range:tuple = (-90, 90), lng_range:tup
 
 def api_openWeather(
     query_list,
-    apiKey,
+    apiKey = None,
     query_remainder = 1000,
     base_api = f'https://api.openweathermap.org/data/2.5/weather',
     units = 'metric',
@@ -102,28 +99,33 @@ def api_openWeather(
 ):
     query_size = len(query_list)
     queries_postAPI = query_remainder - query_size
+    flag = False
     if force_run == False:
         if queries_postAPI < 0:
             print(
-                'Sorry but this API is limited to 1000 requests per day.\n' +
-                f'You\'ve requested {queries_postAPI * -1} queries too many today.\n\n' +
-                f'Please try again with only {query_remainder} queries in your data set.\n' +
-                'Return Error code: -1')        
-            return -1
-        elif (queries_postAPI < 1000):
-            print(
-                f'You\'ve requested {query_size} queries. You have 1000 per day.\n' +
-                f'If you continue you will have only {queries_postAPI} afterwards.')
+                'Sorry but this API is limited to 1000 requests per day.\n'
+                f'You\'ve requested {queries_postAPI * -1} queries too many today.\n\n'
+                f'Please try again with only {query_remainder} queries in your data set.\n'
+                'Exiting with error code: -1')        
+            return -1, query_remainder
+        else:
+            warning = (
+                f'You\'ve requested {query_size} queries. You have 1000 per day.\n'
+                f'If you continue you will have only {queries_postAPI} afterwards.\n')
             question = 'Are you sure you want to continue? Enter y to continue: '
-            flag = input(question).lower()        
-        flags = {'y': True, 'yes': True, 'continue': True, 'cont': True}
-        if flag in flags:
-            flag = flags[flag]
+            print(warning)
+            flag = input((warning + question)).lower()        
+            flags = {'y': True, 'yes': True, 'continue': True, 'cont': True}
+            if flag in flags:
+                flag = flags[flag]
     elif force_run == True:
         flag = True
-    else:
-        print(f'Bad input {force_run}: Quitting early')
-        return -1
+    elif apiKey == None:
+        print(
+            f'Sorry, but this API requires a key!\n'
+            f'apiKey is a required argument for this function.'
+            )
+        return -1, query_remainder
 
     if flag == True:
         # Setup for API Key, data storage, and logging counters
@@ -171,10 +173,10 @@ def api_openWeather(
             '-----------------------------\n' +
             'Data Retrieval Complete\n' +
             '-----------------------------\n')
-        return data
+        return data, queries_postAPI
     else:
         print('\nAPI call canceled! \nReturn Code: 0')
-        return 0
+        return 0, query_remainder
 
 
 #----------------------------------------------------
@@ -229,10 +231,6 @@ def __title__(xTitle, yTitle):
     ''''Returns the complete title of a graph'''
     title = f'City {xTitle} vs. {yTitle} ({__date__()})'
     return title
-
-# TODO:
-# def __correlation__(coefficient):
-
 
 ### IMPORTED FUNCTIONS /-->
 
