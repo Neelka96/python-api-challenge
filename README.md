@@ -17,14 +17,14 @@
 5. [Files and Directory Structure](#files-and-directory-structure)  
 6. [Expected Results](#expected-results)  
 7. [Final Analysis](#final-analysis)  
-    - [Analysis Section 1](#analysis-section-1)
-    - [Analysis Section 2](#analysis-section-2)
+    - [Analysis Section 1](#analysis-section-1)  
+    - [Analysis Section 2](#analysis-section-2)  
 
 
-## Introduction
+## Introduction  
 This challenge is broken into two assignments: WeatherPy and VacationPy  
 
-### WeatherPy:
+### WeatherPy:  
 Data's true power is its ability to definitively answer questions. So, let's take what  
 you've learned about Python requests, APIs, and JSON traversals to answer a fundamental  
 question: "What is the weather like as we approach the equator?"  
@@ -37,9 +37,15 @@ cities of varying distances from the equator. We'll use the citipy Python librar
 an external site., the OpenWeatherMap APILinks to an external site., and our problem-solving  
 skills to create a representative model of weather across cities.  
 
+### VacationPy:  
 Well, if we can do that, then surely we can work our magic to plan a perfect destination  
 vacation based off of climate. Using the power of a different API and method for calling  
-that API (as per usual), we can even graph the data in the form of a map.
+that API (as per usual), we can even graph the data in the form of a map.  
+
+In this deliverable, we'll use your weather data skills to plan future vacations. Also,  
+we'll use Jupyter notebooks, the geoViews Python library, and the Geoapify API. Our main  
+tasks will be to use the Geoapify API and the geoViews Python library and to employ our  
+Python skills to create map visualizations.  
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
