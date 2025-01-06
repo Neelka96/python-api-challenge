@@ -141,50 +141,52 @@ Python skills to create map visualizations.
 
 
 ### User Defined Module - gcs_fx
-    A small python file has been created alongside the Jupyter Notebook `WeatherPy.ipynb` for the  
-    purpose of creating a separation between the heavy-lifting of graphing methods required by the  
-    assigned challenge, as a microcosm version of a 'back-end'. Said file is named GCS_Fx.py and  
-    runs under the alias gcs in the notebook. Modules `numpy`, `matplotlib.pyplot`, `time`, `scipy`,  
-    `citipy`, and `requests` have all been transferred to GCS_Fx to enhance readability of WeatherPy  
-    and allow for focus of modifying data as DataFrames via `pandas` and duplicating graphs with  
-    reoccurring corrections of labels and titles. The automatic generation of geographic coordinate  
-    pairs provided in the source code by edX and 2U has also been moved to the backend and given  
-    arguments that allow for slight customization using `citipy` and `numpy`, as well as the API calls  
-    used to retrieve the graphed data. The API calls are set by default for the purpose of this  
-    challenge but are moved to the backend and given arguments to change the queries.  
-    
-    Top-Level graphing methods group multiple matplotlib.pyplot functions together so only one line  
-    of code must be deployed to create the graphs and display the data/results. Top-level code has  
-    been given default arguments for preferred outputs but allows for changes based on slightly  
-    different needs of different data outputs. In doing so, sensitive `pyplot` methods are being  
-    protected from errors while still allowing for custom outputs. almost all of the methods used  
-    in the Notebook could be modulated, graphical output is the least subject to changes, whereas  
-    if the DataFrames used are changed the output will still be correct if 'back-end' directories  
-    for label constructors are updated accordingly. Additional `update` methods could be added as  
-    well. Please be advised, this was done for practice as well as improving the usefulness of the  
-    notebook and cleaning up the code in general.  
-    
-    The following shorthand list was used initially to help frame the reasons why this path was  
-    taken as opposed to re-coding it each time:
-    - Readability
-    - Easy customization
-    - Replication
-    - Protection of sensitive methods
-    - Separation of dependencies into another Python file:
-        - Cleans/protects namespace
-        - Creates specific roles --> Which code is more variable?
-            - DataFrames are viable to changes
-            - Pyplot objects are subject to specific designations/formatting
-                - Methods can always be updated for more label corrections and formatting req,
-                --> Simply add more names into the directory
-            - API call can be considered non-variable but arguments for changing queries are provided
+A small python file has been created alongside the Jupyter Notebook `WeatherPy.ipynb` for the  
+purpose of creating a separation between the heavy-lifting of graphing methods required by the  
+assigned challenge, as a microcosm version of a 'back-end'. Said file is named GCS_Fx.py and  
+runs under the alias gcs in the notebook. Modules `numpy`, `matplotlib.pyplot`, `time`, `scipy`,  
+`citipy`, and `requests` have all been transferred to GCS_Fx to enhance readability of WeatherPy  
+and allow for focus of modifying data as DataFrames via `pandas` and duplicating graphs with  
+reoccurring corrections of labels and titles. The automatic generation of geographic coordinate  
+pairs provided in the source code by edX and 2U has also been moved to the backend and given  
+arguments that allow for slight customization using `citipy` and `numpy`, as well as the API calls  
+used to retrieve the graphed data. The API calls are set by default for the purpose of this  
+challenge but are moved to the backend and given arguments to change the queries.  
+
+Top-Level graphing methods group multiple matplotlib.pyplot functions together so only one line  
+of code must be deployed to create the graphs and display the data/results. Top-level code has  
+been given default arguments for preferred outputs but allows for changes based on slightly  
+different needs of different data outputs. In doing so, sensitive `pyplot` methods are being  
+protected from errors while still allowing for custom outputs. almost all of the methods used  
+in the Notebook could be modulated, graphical output is the least subject to changes, whereas  
+if the DataFrames used are changed the output will still be correct if 'back-end' directories  
+for label constructors are updated accordingly. Additional `update` methods could be added as  
+well. Please be advised, this was done for practice as well as improving the usefulness of the  
+notebook and cleaning up the code in general.  
+
+The following shorthand list was used initially to help frame the reasons why this path was  
+taken as opposed to re-coding it each time:
+- Readability
+- Easy customization
+- Replication
+- Protection of sensitive methods
+- Separation of dependencies into another Python file:
+    - Cleans/protects namespace
+    - Creates specific roles --> Which code is more variable?
+        - DataFrames are viable to changes
+        - Pyplot objects are subject to specific designations/formatting
+            - Methods can always be updated for more label corrections and formatting req,
+            --> Simply add more names into the directory
+        - API call can be considered non-variable but arguments for changing queries are provided
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
 
 
 ### Limitations  
-- [ ] Limit 1  
+- [ ] Several functions defined in gcs_fx are limited to the scope of this project including:  
+    + api_openWeather()
+    + 
 - [ ] Limit 2  
 - [ ] Limit 3  
 
