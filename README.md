@@ -13,14 +13,15 @@
 4. [Setup and Usage](#setup-and-usage)  
     - [Prerequisites](#prerequisites)  
     - [Instructions](#instructions)  
-    - [User Defined Module - gcs_fx](#user-defined-module---gcs_fx)
+    - [User Defined Module - gcs_fx](#user-defined-module---gcs_fx)  
     - [Limitations](#limitations)  
 5. [Files and Directory Structure](#files-and-directory-structure)  
 6. [Expected Results](#expected-results)  
 
 
+
 ## Introduction  
-This challenge is broken into two assignments: WeatherPy and VacationPy  
+This challenge is broken into two assignments: WeatherPy and VacationPy.  
 
 ### WeatherPy:  
 Data's true power is its ability to definitively answer questions. So, let's take what  
@@ -48,6 +49,7 @@ Python skills to create map visualizations.
 [:arrow_up: Return to TOC](#table-of-contents)  
 
 
+
 ## Challenge Overview 
 {Paragraph 1 - Intro}
 {Module environment and summary of task at hand}
@@ -66,6 +68,8 @@ Python skills to create map visualizations.
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
+
+
 ## Variables/Breakdowns  
 ### Relevant Variables:  
 ```
@@ -80,6 +84,8 @@ Python skills to create map visualizations.
 ```
 
 [:arrow_up: Return to TOC](#table-of-contents)  
+
+
 
 ### Summary Breakdowns:  
 ```
@@ -100,36 +106,81 @@ Python skills to create map visualizations.
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
+
+
 ## Setup and Usage  
 ### Prerequisites  
-- {Language Version}  
-- Standard libraries: (included with {Language})  
-- Non-standard library:  
-- {IDE Requirements}  
+- Python 3.x  
+- Standard libraries: `pathlib`, `time`, `requests` (included with Python)  
+- Non-standard library: `pandas`, `numpy`, `matplotlib`, `scipy`, and `citipy`  
+- IDE that supports Jupyter Notebooks with Python  
 
 [:arrow_up: Return to TOC](#table-of-contents)  
+
+
 
 ### Instructions  
 1. Clone this repository.  
-2. Ensure IDE is up to date and running.  
-3. Please run the following code in your IDE if the dependencies aren't found:  
-    ```
-    pip install...
-    pip install...
-    or
-    conda install...
-    conda install...
-    ```
-4. Ensure the input files are in the correct directory.  
-5. Open {main_file_name} in your IDE and {perform execution}.  
-6. {Where results are found}  
-> [!TIP]  
-> %%%  
+2. Ensure IDE is up to date and running.   
+3. Open `WeatherPy.ipynb` in your IDE and run all cells.  
+4. If the necessary dependencies aren't found, install using the following methods:  
+    - For *pip*  
+        `pip install <missing_library>`  
+    - For *anaconda*  
+        `conda install <missing_library>`  
+> [!WARNING]  
+> Please note that neither *pathlib*, *time*, nor *requests* was installed using conda.  
+> *pathlib*, *time*, and *requests* are base modules almost always included with Python  
+> installations. It is recommended to use `pip install` for these two modules to avoid  
+> path dependencies.  
+5. IDE/Terminal (depending on how code is being executed) will prompt user for 'confirm'
+6. **Results will print throughout the Jupyter Interactive Notebook**  
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
 
+
 ### User Defined Module - gcs_fx
+    A small python file has been created alongside the Jupyter Notebook `WeatherPy.ipynb` for the  
+    purpose of creating a separation between the heavy-lifting of graphing methods required by the  
+    assigned challenge, as a microcosm version of a 'back-end'. Said file is named GCS_Fx.py and  
+    runs under the alias gcs in the notebook. Modules `numpy`, `matplotlib.pyplot`, `time`, `scipy`,  
+    `citipy`, and `requests` have all been transferred to GCS_Fx to enhance readability of WeatherPy  
+    and allow for focus of modifying data as DataFrames via `pandas` and duplicating graphs with  
+    reoccurring corrections of labels and titles. The automatic generation of geographic coordinate  
+    pairs provided in the source code by edX and 2U has also been moved to the backend and given  
+    arguments that allow for slight customization using `citipy` and `numpy`, as well as the API calls  
+    used to retrieve the graphed data. The API calls are set by default for the purpose of this  
+    challenge but are moved to the backend and given arguments to change the queries.  
+    
+    Top-Level graphing methods group multiple matplotlib.pyplot functions together so only one line  
+    of code must be deployed to create the graphs and display the data/results. Top-level code has  
+    been given default arguments for preferred outputs but allows for changes based on slightly  
+    different needs of different data outputs. In doing so, sensitive `pyplot` methods are being  
+    protected from errors while still allowing for custom outputs. almost all of the methods used  
+    in the Notebook could be modulated, graphical output is the least subject to changes, whereas  
+    if the DataFrames used are changed the output will still be correct if 'back-end' directories  
+    for label constructors are updated accordingly. Additional `update` methods could be added as  
+    well. Please be advised, this was done for practice as well as improving the usefulness of the  
+    notebook and cleaning up the code in general.  
+    
+    The following shorthand list was used initially to help frame the reasons why this path was  
+    taken as opposed to re-coding it each time:
+    - Readability
+    - Easy customization
+    - Replication
+    - Protection of sensitive methods
+    - Separation of dependencies into another Python file:
+        - Cleans/protects namespace
+        - Creates specific roles --> Which code is more variable?
+            - DataFrames are viable to changes
+            - Pyplot objects are subject to specific designations/formatting
+                - Methods can always be updated for more label corrections and formatting req,
+                --> Simply add more names into the directory
+            - API call can be considered non-variable but arguments for changing queries are provided
+
+[:arrow_up: Return to TOC](#table-of-contents)  
+
 
 
 ### Limitations  
@@ -138,6 +189,8 @@ Python skills to create map visualizations.
 - [ ] Limit 3  
 
 [:arrow_up: Return to TOC](#table-of-contents)  
+
+
 
 ## Files and Directory Structure  
 ```  
@@ -154,9 +207,11 @@ Outputs will be created without additional directory structuring
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
+
+
 ## Expected Results  
-1. Updated {main...}
-2. New directory structure for `{repo_name}`:
+1. Updated WeatherPy.ipynb and VacationPy.ipynb
+2. New directory structure for `python-api-challenge`:
 ```
 {repo_name}/
 |
