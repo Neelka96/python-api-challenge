@@ -1,4 +1,4 @@
-# Python API Challenge - WeatherPy
+# Python API Challenge - Vacation_WeatherPy
 `Module 6`  
 `EdX(2U) & UT Data Analytics and Visualization Bootcamp`  
 `Cohort UTA-VIRT-DATA-PT-11-2024-U-LOLC`  
@@ -21,13 +21,25 @@
     - [Analysis Section 2](#analysis-section-2)
 
 
-## Introduction  
+## Introduction
+This challenge is broken into two assignments: WeatherPy and VacationPy  
+
+### WeatherPy:
 Data's true power is its ability to definitively answer questions. So, let's take what  
 you've learned about Python requests, APIs, and JSON traversals to answer a fundamental  
-question: "What is the weather like as we approach the equator?"
+question: "What is the weather like as we approach the equator?"  
 
 Now, we know what you may be thinking: “That’s obvious. It gets hotter.” But, if pressed  
-for more information, how would you prove that?
+for more information, how would you prove that?  
+
+So, in this deliverable we'll create a Python script to visualize the weather of over 500  
+cities of varying distances from the equator. We'll use the citipy Python libraryLinks to  
+an external site., the OpenWeatherMap APILinks to an external site., and our problem-solving  
+skills to create a representative model of weather across cities.  
+
+Well, if we can do that, then surely we can work our magic to plan a perfect destination  
+vacation based off of climate. Using the power of a different API and method for calling  
+that API (as per usual), we can even graph the data in the form of a map.
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
