@@ -38,7 +38,8 @@ def r_plot(dict, x, y, text_pos = (0, 0), coord_sys = 'data',
     '''Takes in a DataFrame object and desired columns to use as axes'''
     (axis, _) = s_plot(dict, x, y)
     (slope, intercept, r_value, _, _) = linregress(dict[x], dict[y])
-    print(f'The r^2-value is:   {r_value**2}')
+    print(f'The r^2-value is:               {r_value**2}')
+    print(f'The correlation coefficient is: {r_value}')
     regress_vals = [val * slope + intercept for val in dict[x]]
     axis.plot(dict[x], regress_vals, color = line_color, 
             alpha = line_alpha, label = f'{y} Linear Regression')
