@@ -13,12 +13,10 @@
 4. [Setup and Usage](#setup-and-usage)  
     - [Prerequisites](#prerequisites)  
     - [Instructions](#instructions)  
+    - [User Defined Module - gcs_fx](#user-defined-module---gcs_fx)
     - [Limitations](#limitations)  
 5. [Files and Directory Structure](#files-and-directory-structure)  
 6. [Expected Results](#expected-results)  
-7. [Final Analysis](#final-analysis)  
-    - [Analysis Section 1](#analysis-section-1)  
-    - [Analysis Section 2](#analysis-section-2)  
 
 
 ## Introduction  
@@ -130,6 +128,10 @@ Python skills to create map visualizations.
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
+
+### User Defined Module - gcs_fx
+
+
 ### Limitations  
 - [ ] Limit 1  
 - [ ] Limit 2  
@@ -171,51 +173,5 @@ Outputs will be created without additional directory structuring
 |   |— main... (updated)
 ```
 {New directory paths indicate proper running and exporting of data}
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
----
-
-## Final Analysis:    
-### {Analysis Section 1}:  
-- **<ins>Intro:</ins>**  
-
-
-- **<ins>Observable Quantity:</ins>**  
-
-
-- **<ins>Important Relationships:</ins>**  
-
-
-- **<ins>Main Factors:</ins>**  
-
-
-- **<ins>Implied Story:</ins>**  
-
-
-- **<ins>Summary Story:</ins>**  
-
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
-
-### {Analysis Section 2}:  
-- **<ins>Intro:</ins>**  
-
-
-- **<ins>Observable Quantity:</ins>**  
-
-
-- **<ins>Important Relationships:</ins>**  
-
-
-- **<ins>Main Factors:</ins>**  
-
-
-- **<ins>Implied Story:</ins>**  
-
-
-- **<ins>Summary Story:</ins>**  
-
 
 [:arrow_up: Return to TOC](#table-of-contents)  
