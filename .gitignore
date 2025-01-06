@@ -4,9 +4,6 @@ api_keys.py
 # Adding MacOS directory files
 .DS_Store
 
-# Markdown template file for documentation
-Basic_Temp.md
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
