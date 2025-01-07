@@ -6,8 +6,8 @@
 
 ## Table of Contents  
 1. [Introduction](#introduction)  
-    - [WeatherPy](#weatherpy)
-    - [VacationPy](#vacationpy)
+    - [WeatherPy](#weatherpy)  
+    - [VacationPy](#vacationpy)  
 2. [Challenge Overview](#challenge-overview)  
 3. [Variables/Breakdowns](#variablesbreakdowns)  
     - [Relevant Variables](#relevant-variables)  
