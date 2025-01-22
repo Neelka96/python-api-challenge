@@ -8,13 +8,12 @@
 1. [Introduction](#introduction)  
     - [WeatherPy](#weatherpy)  
     - [VacationPy](#vacationpy)  
-2. [Challenge Overview](#challenge-overview)  
-3. [Setup and Usage](#setup-and-usage)  
+2. [Setup and Usage](#setup-and-usage)  
     - [Prerequisites](#prerequisites)  
     - [Instructions](#instructions)  
     - [User Defined Module - gcs_fx](#user-defined-module---gcs_fx)  
-4. [Files and Directory Structure](#files-and-directory-structure)  
-5. [Expected Results](#expected-results)  
+3. [Files and Directory Structure](#files-and-directory-structure)  
+4. [Expected Results](#expected-results)  
 
 
 
@@ -45,26 +44,6 @@ In this deliverable, we'll use your weather data skills to plan future vacations
 we'll use Jupyter notebooks, the geoViews Python library, and the Geoapify API. Our main  
 tasks will be to use the Geoapify API and the geoViews Python library and to employ our  
 Python skills to create map visualizations.  
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
-
-
-## Challenge Overview 
-{Paragraph 1 - Intro}
-{Module environment and summary of task at hand}
-{Data given, presentation, and wanted information}
-
-{Module environment for development and current execution, code language version/compiiler/IDE} 
-{Module dependencies/imports}
-{Method and process of solution}
-{Paragraph 2 - Summary}
-
-{Paragraph 3 - Conclusion of overview}
-
-> [!NOTE]  
-> 
-> 
 
 [:arrow_up: Return to TOC](#table-of-contents)  
 
