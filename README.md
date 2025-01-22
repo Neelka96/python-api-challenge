@@ -9,16 +9,12 @@
     - [WeatherPy](#weatherpy)  
     - [VacationPy](#vacationpy)  
 2. [Challenge Overview](#challenge-overview)  
-3. [Variables/Breakdowns](#variablesbreakdowns)  
-    - [Relevant Variables](#relevant-variables)  
-    - [Summary Breakdowns](#summary-breakdowns)  
-4. [Setup and Usage](#setup-and-usage)  
+3. [Setup and Usage](#setup-and-usage)  
     - [Prerequisites](#prerequisites)  
     - [Instructions](#instructions)  
     - [User Defined Module - gcs_fx](#user-defined-module---gcs_fx)  
-    - [Limitations](#limitations)  
-5. [Files and Directory Structure](#files-and-directory-structure)  
-6. [Expected Results](#expected-results)  
+4. [Files and Directory Structure](#files-and-directory-structure)  
+5. [Expected Results](#expected-results)  
 
 
 
@@ -71,45 +67,6 @@ Python skills to create map visualizations.
 > 
 
 [:arrow_up: Return to TOC](#table-of-contents)  
-
-
-
-## Variables/Breakdowns  
-### Relevant Variables:  
-```
-- DF_X  
-    - Variable_x_1  
-    - Variable_x_2  
-    - Variable_x_3  
-- DF_Y  
-    - Variable_y_1  
-    - Variable_y_2  
-    - Variable_y_3
-```
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
-
-
-### Summary Breakdowns:  
-```
-- {Setup}
-- {Cleanup}
-    - {Cleanup 1}
-    - {Cleanup 2}
-        - {Cleanup Sub 1}
-    - {Finish Cleanup}
-- {Summary}
-- {Summary}
-- {New Tables}
-    - {Charts}
-- {Regression}
-- {Analysis}
-    - {Conclusion}
-```
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
 
 
 ## Setup and Usage  
@@ -186,53 +143,20 @@ taken as opposed to re-coding it each time:
 [:arrow_up: Return to TOC](#table-of-contents)  
 
 
-
-### Limitations  
-- [ ] Several functions defined in gcs_fx are limited to the scope of this project including:  
-    + api_openWeather()
-    + 
-- [ ] Limit 2  
-- [ ] Limit 3  
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
-
-
 ## Files and Directory Structure  
 ```  
-{repo_name}/
+python-api-challenge/
 |
-|— {main_directory}/
-|   |— {input_directory}/
-|   |   — test1.csv
-|   |   - test2.csv
-|   |— main...
+|-- Vacation_WeatherPy
+|   |—- output_data/
+|   |   |—- cities.csv
+|   |-- gcs_fx.py
+|   |-- VacationPy.ipynb
+|   |-- WeatherPy.ipynb
+|-- .gitignore
+|-- README.md
 ```  
 This structure ensures all inputs are organized within their respective folders.  
 Outputs will be created without additional directory structuring  
-
-[:arrow_up: Return to TOC](#table-of-contents)  
-
-
-
-## Expected Results  
-1. Updated WeatherPy.ipynb and VacationPy.ipynb
-2. New directory structure for `python-api-challenge`:
-```
-{repo_name}/
-|
-|— {main_directory}/
-|   |— {input_directory}/
-|   |   — test1.csv
-|   |   - test2.csv
-|   |- {results_directory}/
-|   |   - result1.pdf
-|   |   - result2.png
-|   |   - result3.jpeg
-|   |   - result4.py
-|   |   - result5.ipynb
-|   |— main... (updated)
-```
-{New directory paths indicate proper running and exporting of data}
 
 [:arrow_up: Return to TOC](#table-of-contents)  
